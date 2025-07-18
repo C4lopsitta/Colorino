@@ -1,6 +1,9 @@
 package dev.robaldo.colorino
 
 import android.Manifest
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -21,6 +24,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Brightness1
 import androidx.compose.material.icons.rounded.BookmarkAdd
+import androidx.compose.material.icons.rounded.ContentCopy
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -187,13 +191,28 @@ class MainActivity : ComponentActivity() {
                                             horizontalArrangement = Arrangement.End,
                                             modifier = Modifier.fillMaxWidth().padding( top = 12.dp )
                                         ) {
+                                            val context = this@MainActivity
                                             TextButton(
                                                 onClick = {
+                                                    fun copyToClipboard(context: Context, text: String) {
+                                                        val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                                                        val clip = ClipData.newPlainText("Copied Text", text)
+                                                        clipboard.setPrimaryClip(clip)
+                                                    }
 
+                                                    fun rgbToHex(r: Int, g: Int, b: Int): String {
+                                                        require(r in 0..255) { "Red component out of range: $r" }
+                                                        require(g in 0..255) { "Green component out of range: $g" }
+                                                        require(b in 0..255) { "Blue component out of range: $b" }
+
+                                                        return String.format("#%02X%02X%02X", r, g, b)
+                                                    }
+
+                                                    copyToClipboard(text=rgbToHex(colour.red, colour.green, colour.blue), context=context)
                                                 }
                                             ) {
-                                                Icon(Icons.Rounded.BookmarkAdd, contentDescription = null)
-                                                Text("Bookmark")
+                                                Icon(Icons.Rounded.ContentCopy, contentDescription = null)
+                                                Text("Copy to Clipboard")
                                             }
                                         }
                                     }
