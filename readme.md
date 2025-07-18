@@ -27,6 +27,11 @@ This project has been created as a gift for a friend, support will be sparse but
 and have fun with the project. The project is entirely (from the ESP32 to the Android app's code) 
 licensed under the GPLv3 License, as it can be seen in the [COPYING](COPYING) file.<br>
 
+The Bluetooth LE implementation goes against any standard, using a non-registered vendor code, as i 
+unfortunately don't have one. There's no pairing or encryption, your scanned colors will be broadcasted 
+to anyone and anything around you that is listening, as I have used plain old advertising packets 
+for communication for simplicity reasons.
+
 The TCS34725 RGB Sensor is quite inaccurate from my testing, often reporting darker colours or heavily
 averaging the colors into grays and blacks, i'd suggest, if you try to copy the project yourself, to 
 try another sensor, and inform yourself better than i did. I hope this will be useful for someone out 
