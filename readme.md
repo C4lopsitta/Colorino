@@ -12,6 +12,7 @@ the device.
 - Many messy wires
 - TCS34725 RGB Sensor
 - 128x32 OLED Monochromatic display
+- A simple tupperware container from the kitchen cut with a surgical scalpel heated with a plain old lighter
 
 ## App Screenshots
 ![app.png](docs/app.png)
@@ -36,3 +37,7 @@ The TCS34725 RGB Sensor is quite inaccurate from my testing, often reporting dar
 averaging the colors into grays and blacks, i'd suggest, if you try to copy the project yourself, to 
 try another sensor, and inform yourself better than i did. I hope this will be useful for someone out 
 there in some kind of way, it's surprising how much you can do with an afternoon of soldering and coding. 
+
+## Device images
+![device-front.jpeg](docs/device-front.jpeg)
+![device-rear.jpeg](docs/device-rear.jpeg)
